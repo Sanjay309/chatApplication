@@ -1,0 +1,22 @@
+{%extends 'base.html'%}
+{%load static %}
+{%block content%}
+	<section class="feature">
+		<div class="feature-content">
+			<h1>{{groupname}}</h1>
+		</div>
+	</section>
+    <section class="feature">
+		<div>
+			<textarea id = "chat" cols = "100" rows="20">
+                {% for chat in chats %}
+                    {{chat.content}}
+                {% endfor%}
+            </textarea><br>
+			<input id = "message" type = "text" size="100"><br>
+			<input id = "message-submit" type = "button" value="Send">
+            {{ groupname|json_script:"group_name" }}
+            <script src="{% static 'js/app.js' %}"></script>   
+		</div>
+	</section>
+{%endblock content%}

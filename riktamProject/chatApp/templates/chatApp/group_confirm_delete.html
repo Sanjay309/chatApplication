@@ -1,0 +1,16 @@
+{%extends 'base.html'%}
+
+{%block content%}
+<div class="center">
+	<form method="post" class="card">
+		{% csrf_token %}
+		<h2>Delete Group</h2>
+		<p>Are you sure that you want to delete "{{group}}"?</p>
+		<p class="form-buttons">
+			<input type="submit" class="btn btn-primary" value="Delete">
+			<a href="{% url 'groups'%}" class="btn btn-outline">Cancel</a>
+		</p>
+	</form>
+</div>
+
+{%endblock content%}
