@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.contrib.auth.models import Group
+from django.contrib.auth.models import Group, User
 from .models import Chat
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -14,13 +14,15 @@ def home(request):
 def group(request, group_name):
     print("group name", group_name)
     group = Group.objects.filter(name = group_name).first()
+    users = User.objects.all()
+    print(users)
     chats = []
     if group:
         chats = Chat.objects.filter(group = group)
     else:
         group = Group(name = group_name)
         group.save()
-    return render(request, 'chatApp/group_2.html', {'groupname' : group_name, 'chats': chats})
+    return render(request, 'chatApp/group_2.html', {'groupname' : group_name, 'chats': chats, 'users': users})
 
 class GroupList(LoginRequiredMixin, ListView):
     model = Group
