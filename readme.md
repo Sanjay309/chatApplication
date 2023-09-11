@@ -14,7 +14,7 @@ Clone the project
 Go to the project directory
 
 ```bash
-  cd chatApplication
+  cd riktamProject
 ```
 
 Install dependencies
